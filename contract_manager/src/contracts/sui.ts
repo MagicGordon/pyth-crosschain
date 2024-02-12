@@ -96,13 +96,6 @@ export class SuiPriceFeedContract extends PriceFeedContract {
       timestamp: string;
     };
   }) {
-    const packageId = await this.getPythPackageId();
-    const expectedType = `${packageId}::price::Price`;
-    if (priceInfo.type !== expectedType) {
-      throw new Error(
-        `Price type mismatch, expected ${expectedType} but found ${priceInfo.type}`
-      );
-    }
     let expo = priceInfo.fields.expo.fields.magnitude;
     if (priceInfo.fields.expo.fields.negative) expo = "-" + expo;
     let price = priceInfo.fields.price.fields.magnitude;
