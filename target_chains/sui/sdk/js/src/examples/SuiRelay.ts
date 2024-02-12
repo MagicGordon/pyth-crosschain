@@ -75,7 +75,7 @@ async function run() {
     await client.updatePriceFeeds(tx, updateData, existingFeeds);
   }
   if (newFeeds.length > 0) {
-    const updateData = await connection.getPriceFeedsUpdateData(existingFeeds);
+    const updateData = await connection.getPriceFeedsUpdateData(newFeeds);
     await client.createPriceFeed(tx, updateData);
   }
 
